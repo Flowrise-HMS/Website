@@ -1,0 +1,19 @@
+{
+    "name": "clinicalmaster",
+    "label": "ClinicalMaster (Physiotherapy)",
+    "default_layout": "index",
+    "layouts": {
+        "index": "Home (Physiotherapy)",
+        "about-us": "About Us",
+        "services": "Services",
+        "team": "Team",
+        "contact-us": "Contact Us",
+        "faqs": "FAQs",
+        "appointment": "Appointment"
+    },
+    "assets": {
+        "logo_dark": "images/logo.svg",
+        "logo_light": "images/logo-white.svg",
+        "favicon": "images/favicon.png"
+    }
+}

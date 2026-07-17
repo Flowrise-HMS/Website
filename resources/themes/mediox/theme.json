@@ -1,0 +1,13 @@
+{
+    "name": "mediox",
+    "label": "Mediox (Home One)",
+    "default_layout": "home-one",
+    "layouts": {
+        "home-one": "Home One"
+    },
+    "assets": {
+        "logo_dark": "images/logo-dark.png",
+        "logo_light": "images/logo-light.png",
+        "favicon": "images/favicons/favicon-32x32.png"
+    }
+}

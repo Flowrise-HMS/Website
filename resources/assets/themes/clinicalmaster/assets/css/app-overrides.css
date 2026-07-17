@@ -1,0 +1,569 @@
+/* ClinicalMaster HMS overrides — reliable header/nav/logo without missing Tailwind utilities */
+
+/* Sticky page shell: footer stays at bottom even when content is short */
+html,
+body {
+  min-height: 100%;
+}
+
+body.cm-no-smoother {
+  overflow-x: hidden;
+}
+
+.page-wraper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-wraper > #main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+.page-wraper > .cm-footer {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.cm-site-header {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.cm-site-header.is-fixed {
+  position: fixed;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.cm-site-header .cm-main-bar {
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cm-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.5rem;
+  padding-block: 0.75rem;
+}
+
+.cm-logo-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  max-width: min(180px, 42vw);
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.cm-site-header.is-fixed .cm-logo-link {
+  background: transparent;
+  padding: 0;
+}
+
+.cm-logo-link .cm-logo {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 40px;
+  object-fit: contain;
+}
+
+/* Higher specificity than `.cm-logo-link .cm-logo` so only one logo is visible */
+.cm-logo-link .cm-logo-dark {
+  display: none;
+}
+
+.cm-site-header.is-fixed .cm-logo-link .cm-logo-light {
+  display: none;
+}
+
+.cm-site-header.is-fixed .cm-logo-link .cm-logo-dark {
+  display: block;
+}
+
+.cm-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.cm-desktop-nav {
+  display: none;
+  min-width: 0;
+}
+
+.cm-desktop-nav .cm-nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cm-desktop-nav .cm-nav-list a {
+  display: inline-block;
+  padding: 0.4rem 0.65rem;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cm-site-header.is-fixed .cm-desktop-nav .cm-nav-list a {
+  color: var(--heading-color, #282c32);
+}
+
+.cm-desktop-nav .cm-nav-list a:hover {
+  color: var(--primary, #2062c5);
+}
+
+.cm-book-btn {
+  display: none;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.cm-menu-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.45rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.cm-menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+.cm-site-header.is-fixed .cm-menu-toggle span {
+  background: var(--heading-color, #282c32);
+}
+
+.cm-mobile-nav {
+  display: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(20, 24, 32, 0.97);
+  padding: 0.75rem 0 1rem;
+}
+
+.cm-site-header.is-fixed .cm-mobile-nav {
+  background: #fff;
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+.cm-site-header.is-open .cm-mobile-nav {
+  display: block;
+}
+
+.cm-mobile-nav .cm-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cm-mobile-nav .cm-nav-list a {
+  display: block;
+  padding: 0.85rem 0;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cm-site-header.is-fixed .cm-mobile-nav .cm-nav-list a {
+  color: var(--heading-color, #282c32);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+.cm-mobile-book {
+  display: inline-flex;
+  margin-top: 1rem;
+}
+
+@media (min-width: 992px) {
+  .cm-desktop-nav {
+    display: block;
+  }
+
+  .cm-book-btn {
+    display: inline-flex;
+  }
+
+  .cm-menu-toggle,
+  .cm-mobile-nav {
+    display: none !important;
+  }
+}
+
+/* Inner pages */
+.cm-page-banner {
+  position: relative;
+  overflow: hidden;
+  min-height: 14rem;
+  display: flex;
+  align-items: flex-end;
+  padding: 7rem 0 2.5rem;
+  background: var(--secondary, #282c32);
+}
+
+@media (min-width: 992px) {
+  .cm-page-banner {
+    min-height: 16rem;
+    padding: 8rem 0 3rem;
+  }
+}
+
+.cm-page-banner__media,
+.cm-page-banner__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.cm-page-banner__media {
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+}
+
+.cm-page-banner__overlay {
+  background: linear-gradient(90deg, rgba(40, 44, 50, 0.95), rgba(40, 44, 50, 0.7));
+}
+
+.cm-page-banner__content {
+  position: relative;
+  z-index: 1;
+}
+
+.cm-page-banner__title {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.cm-page-banner__breadcrumb {
+  margin-top: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.cm-page-banner__breadcrumb a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+
+.cm-page-banner__breadcrumb a:hover {
+  color: #fff;
+}
+
+.cm-page-banner__breadcrumb span[aria-hidden="true"] {
+  margin-inline: 0.5rem;
+}
+
+.cm-page-body {
+  width: 100%;
+}
+
+.cm-empty-page {
+  padding: 4rem 0 5rem;
+  text-align: center;
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.cm-empty-page p {
+  margin: 0 0 1.5rem;
+  color: var(--body-color, #646464);
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+.cm-booking-panel {
+  padding: 3rem 0 4.5rem;
+  max-width: 56rem;
+}
+
+.cm-booking-panel__title {
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+  color: var(--heading-color, #282c32);
+}
+
+/* Content sections that previously relied on missing utilities */
+.cm-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  padding-top: 7rem;
+  background: var(--secondary, #282c32);
+}
+
+@media (min-width: 992px) {
+  .cm-hero {
+    min-height: 620px;
+    align-items: center;
+  }
+}
+
+.cm-hero__media,
+.cm-hero__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.cm-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.cm-hero__overlay {
+  background: linear-gradient(90deg, rgba(40, 44, 50, 0.95), rgba(40, 44, 50, 0.75), rgba(40, 44, 50, 0.35));
+}
+
+.cm-hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-block: 3rem;
+}
+
+.cm-hero__inner {
+  max-width: 40rem;
+}
+
+.cm-hero__eyebrow {
+  display: inline-block;
+  color: var(--primary, #2062c5);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.cm-hero__title {
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.cm-hero__body {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-top: 1.25rem;
+}
+
+.cm-hero__cta {
+  margin-top: 2rem;
+}
+
+.cm-footer-logo img {
+  display: block;
+  max-height: 40px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+}
+
+.cm-footer {
+  background: var(--secondary, #282c32);
+  color: #fff;
+  padding: 3.5rem 0 2rem;
+}
+
+.cm-footer-grid {
+  display: grid;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+  .cm-footer-grid {
+    grid-template-columns: 1.4fr 1fr;
+  }
+}
+
+.cm-footer p,
+.cm-footer a {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.cm-footer a:hover {
+  color: #fff;
+}
+
+.cm-footer h5 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin: 0 0 1rem;
+}
+
+.cm-footer-contact {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cm-footer-bottom {
+  padding-top: 1.5rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Scroll-to-top: fixed within the viewport, aligned to content edge */
+.cm-scroll-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1100;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  background: var(--primary, #2062c5);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+}
+
+.cm-scroll-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.cm-scroll-top:hover {
+  color: #fff;
+  filter: brightness(1.05);
+}
+
+#dzPreloader {
+  display: none !important;
+}
+
+/* Contact Form Styling Override */
+.website-form-wrap {
+  width: 100%;
+}
+
+.website-alert {
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  background-color: #ecfdf5;
+  border: 1px solid #10b981;
+  color: #065f46;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.website-form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.website-form label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #282c32;
+  margin-bottom: 0.35rem;
+}
+
+.website-form input[type="text"],
+.website-form input[type="email"],
+.website-form textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #e1ebf1;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  color: #282c32;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.website-form input[type="text"]:focus,
+.website-form input[type="email"]:focus,
+.website-form textarea:focus {
+  outline: none;
+  border-color: #2062c5;
+  box-shadow: 0 0 0 3px rgba(32, 98, 197, 0.12);
+}
+
+.website-form button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #2062c5;
+  border: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.website-form button[type="submit"]:hover {
+  background-color: #1a4f9e;
+}
+
+.website-form button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.website-form span {
+  display: block;
+  color: #ef4444;
+  font-size: 0.825rem;
+  margin-top: 0.25rem;
+}

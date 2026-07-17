@@ -1,0 +1,10 @@
+{
+    "name": "Website",
+    "alias": "website",
+    "description": "Customizable public hospital website with themed Blade pages and Filament CMS.",
+    "keywords": ["hms", "website", "cms", "landing"],
+    "priority": 4,
+    "providers": ["Modules\\Website\\Providers\\WebsiteServiceProvider"],
+    "files": [],
+    "requires": ["Modules\\Core"]
+}

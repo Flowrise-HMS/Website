@@ -1,0 +1,28 @@
+{
+    "name": "flowrise-hms/website",
+    "type": "laravel-module",
+    "description": "Public hospital website CMS with theme packs for FlowRise HMS",
+    "license": "MIT",
+    "require": {
+        "php": "^8.4",
+        "flowrise-hms/core": "dev-main"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Website\\": "app/",
+            "Modules\\Website\\Database\\Factories\\": "database/factories/",
+            "Modules\\Website\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Website\\Tests\\": "tests/"
+        }
+    }
+}
