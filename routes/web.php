@@ -9,7 +9,7 @@ if (! Website::isPublicEnabled()) {
 }
 
 $panelSlug = trim((string) Website::panelPath(), '/');
-$reserved = ['api', 'livewire', 'sanctum', 'storage', 'vendor', 'build', 'css', 'js', 'fonts'];
+$reserved = ['api', 'livewire', 'sanctum', 'storage', 'vendor', 'build', 'css', 'js', 'fonts', 'staff'];
 if ($panelSlug !== '' && $panelSlug !== '/') {
     $reserved[] = $panelSlug;
 }
@@ -36,5 +36,5 @@ if ($panelSlug !== '' && $panelSlug !== '/') {
 }
 
 Route::get('/{slug}', [SiteController::class, 'page'])
-    ->where('slug', "^(?!{$reservedPattern}$).+")
+    ->where('slug', "^(?!({$reservedPattern})(/.*)?$).+")
     ->name('website.page');
