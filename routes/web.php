@@ -9,7 +9,7 @@ if (! Website::isPublicEnabled()) {
 }
 
 $panelSlug = trim((string) Website::panelPath(), '/');
-$reserved = ['api', 'livewire', 'sanctum', 'storage', 'vendor', 'build', 'css', 'js', 'fonts', 'staff'];
+$reserved = ['api', 'livewire', 'sanctum', 'storage', 'vendor', 'build', 'css', 'js', 'fonts', 'staff', 'filament-impersonate'];
 if ($panelSlug !== '' && $panelSlug !== '/') {
     $reserved[] = $panelSlug;
 }
