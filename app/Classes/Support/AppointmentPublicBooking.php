@@ -43,7 +43,8 @@ class AppointmentPublicBooking implements PublicBookingContract
 
         return Service::query()
             ->whereIn('id', $this->settings->bookable_service_ids)
-            ->where('is_active', true)
+            ->active()
+            ->nonMedication()
             ->orderBy('name')
             ->get(['id', 'name', 'estimated_duration_minutes'])
             ->map(fn (Service $service): array => [

@@ -10,7 +10,7 @@ Public hospital website CMS with theme packs for FlowRise HMS.
 
 Cluster **Website** in the **Administration** sidebar group (`/website`): **Site Settings** (`/website/manage-website-settings`), **Pages**, **Menus**, **News** (page heading **Posts**, button **New post**), **Team** (heading **Team Members**), **Partners**, **Gallery** (heading **Gallery Albums**), **Booking Requests** (list/edit only; row action **Review**), **Contact Inbox** (heading **Contact Submissions**; list/edit only; row action **View / mark read**). Permissions: Shield abilities per model (Page, Post, Menu, GalleryAlbum, TeamMember, Partner, BookingRequest, ContactSubmission), `View ManageWebsiteSettings`, and the custom `manage_website` / `manage_website_settings`.
 
-Site Settings sections: **Public site** (Enable public website, Admin panel path (only shown while the site is enabled), Active theme, Enable animations), **Brand & appearance** (logos, favicon, colours, footer about text), **Default SEO**, **Contact & booking CTA**, **Online booking** (Bookable services, Default booking branch, Open weekdays, Opens at, Closes at, Slot length (minutes), Bookable days ahead). **Bookable services** lists every active Core service, including medication services created by the Pharmacy catalog, so pick clinical services deliberately. Saving clears the route/config caches and shows the new login URL.
+Site Settings sections: **Public site** (Enable public website, Admin panel path (only shown while the site is enabled), Active theme, Enable animations), **Brand & appearance** (logos, favicon, colours, footer about text), **Default SEO**, **Contact & booking CTA**, **Online booking** (Bookable services, Default booking branch, Open weekdays, Opens at, Closes at, Slot length (minutes), Bookable days ahead). **Bookable services** lists active non-medication Core services (medication catalog entries are excluded from the select and from the public booking wizard). Saving clears the route/config caches and shows the new login URL.
 
 ## Public routes (only while "Enable public website" is on)
 
@@ -62,7 +62,7 @@ php artisan db:seed --class="Modules\\Website\\Database\\Seeders\\Themes\\Clinic
 WEBSITE_SEED_THEME=mediox php artisan db:seed --class="Modules\\Website\\Database\\Seeders\\WebsiteDatabaseSeeder"
 ```
 
-Available theme seeders: `default`, `mediox`, `clinicalmaster`. The **Active theme** dropdown shows the `theme.json` labels: **Default Hospital**, **Mediox (Home One)**, **ClinicalMaster (Physiotherapy)** and **Clinical Blue** (`clinical-blue` has section views but no seeder yet). `php artisan website:publish-theme-assets {theme?}` republishes a theme's public assets.
+Available theme seeders: `default`, `mediox`, `clinicalmaster`, `clinical-blue`. The **Active theme** dropdown shows the `theme.json` labels: **Default Hospital**, **Mediox (Home One)**, **ClinicalMaster (Physiotherapy)** and **Clinical Blue** (`clinical-blue` ships its own hero section and falls back to the default theme's other views). `php artisan website:publish-theme-assets {theme?}` republishes a theme's public assets.
 
 Tests: `php artisan test --compact Modules/Website/tests` (10 files). 10 migrations, 11 models.
 

@@ -2,6 +2,7 @@
 
 namespace Modules\Website\Database\Seeders;
 
+use Modules\Website\Database\Seeders\Themes\ClinicalBlueThemeSeeder;
 use Modules\Website\Database\Seeders\Themes\ClinicalMasterThemeSeeder;
 use Modules\Website\Database\Seeders\Themes\DefaultThemeSeeder;
 use Modules\Website\Database\Seeders\Themes\MedioxThemeSeeder;
@@ -17,6 +18,7 @@ class ThemeSeederRegistry
             'default' => DefaultThemeSeeder::class,
             'mediox' => MedioxThemeSeeder::class,
             'clinicalmaster' => ClinicalMasterThemeSeeder::class,
+            'clinical-blue' => ClinicalBlueThemeSeeder::class,
         ];
     }
 

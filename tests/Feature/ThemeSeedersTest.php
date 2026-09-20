@@ -3,6 +3,7 @@
 namespace Modules\Website\Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Modules\Website\Database\Seeders\Themes\ClinicalBlueThemeSeeder;
 use Modules\Website\Database\Seeders\Themes\ClinicalMasterThemeSeeder;
 use Modules\Website\Database\Seeders\Themes\DefaultThemeSeeder;
 use Modules\Website\Database\Seeders\Themes\MedioxThemeSeeder;
@@ -36,6 +37,7 @@ class ThemeSeedersTest extends TestCase
                 'default' => DefaultThemeSeeder::class,
                 'mediox' => MedioxThemeSeeder::class,
                 'clinicalmaster' => ClinicalMasterThemeSeeder::class,
+                'clinical-blue' => ClinicalBlueThemeSeeder::class,
             ],
             ThemeSeederRegistry::all()
         );
@@ -100,6 +102,7 @@ class ThemeSeedersTest extends TestCase
             'default' => ['default', DefaultThemeSeeder::class, null],
             'mediox' => ['mediox', MedioxThemeSeeder::class, 'home-one'],
             'clinicalmaster' => ['clinicalmaster', ClinicalMasterThemeSeeder::class, 'index'],
+            'clinical-blue' => ['clinical-blue', ClinicalBlueThemeSeeder::class, null],
         ];
     }
 }
