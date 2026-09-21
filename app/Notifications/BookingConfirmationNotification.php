@@ -6,10 +6,11 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Modules\Core\Notifications\Concerns\ResolvesNotificationChannels;
 
 class BookingConfirmationNotification extends Notification implements ShouldQueue
 {
-    use Queueable;
+    use Queueable, ResolvesNotificationChannels;
 
     /**
      * @param  array{type: string, reference: ?string, service: ?string, starts_at: ?string, message: string}  $details
@@ -21,17 +22,7 @@ class BookingConfirmationNotification extends Notification implements ShouldQueu
      */
     public function via(object $notifiable): array
     {
-        $channels = [];
-
-        if (method_exists($notifiable, 'routeNotificationForMail') && filled($notifiable->routeNotificationForMail())) {
-            $channels[] = 'mail';
-        }
-
-        if (method_exists($notifiable, 'routeNotificationForSms') && filled($notifiable->routeNotificationForSms())) {
-            $channels[] = 'sms';
-        }
-
-        return $channels !== [] ? $channels : ['mail'];
+        return $this->channelsFor($notifiable, ['mail', 'sms']);
     }
 
     public function toMail(object $notifiable): MailMessage

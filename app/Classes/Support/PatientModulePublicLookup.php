@@ -38,12 +38,12 @@ class PatientModulePublicLookup implements PatientPublicLookupContract
 
         $patients = $patients
             ->merge($this->searchService->searchByPhone($term))
-            ->merge(Patient::query()->where('email', $term)->limit(5)->get())
+            ->merge($this->searchService->searchByEmail($term))
             ->merge(
                 Patient::query()
                     ->whereHas('identifiers', function ($query) use ($term): void {
                         $query->where('type', IdentifierType::NATIONAL_ID->value)
-                            ->where('value', $term);
+                            ->whereBlindIndex('value', $term);
                     })
                     ->limit(5)
                     ->get()

@@ -36,6 +36,15 @@ class WebsiteBookingPhase2Test extends TestCase
         $this->seedWebsiteSettings();
     }
 
+    public function test_booking_notifications_skip_channels_without_contact_details(): void
+    {
+        $notification = new BookingOtpNotification('123456');
+
+        $this->assertSame(['sms'], $notification->via(new BookingContactNotifiable(null, '+233244000000')));
+        $this->assertSame(['mail'], $notification->via(new BookingContactNotifiable('patient@example.com', null)));
+        $this->assertSame([], $notification->via(new BookingContactNotifiable(null, null)));
+    }
+
     public function test_otp_notification_uses_mail_and_sms_channels(): void
     {
         $notifiable = new BookingContactNotifiable('patient@example.com', '+233244000000');
